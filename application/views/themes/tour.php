@@ -53,9 +53,10 @@
         <style type="text/css" >
             
             body {
-                background-image: url("<?php echo base_url(); ?>assets/themes/default/images/bg-image.png");
+                background-color: rgba(217, 237, 247, 0.19);
+/*                background-image: url("<?php echo base_url(); ?>assets/themes/default/images/bg-image.png");
                 background-repeat: no-repeat;
-                 background-size:cover;
+                 background-size:cover;*/
             }
         </style> 
     <body>
@@ -101,7 +102,7 @@
 
             <div class="row">
 
-                <div class="col-md-3">
+                <div class="col-md-3 col-xs-3">
                     <!--<p class="lead">Shop Name</p>-->
 <!--                    <div class="list-group">
                         <a href="#" class="list-group-item">Category 1</a>
@@ -113,7 +114,7 @@
                     <div id="accordion">
                         <h3>Thai</h3>
                         <div class="list-group">
-                          <a href="#" class="list-group-item"><span class="badge">12</span> Thai 1</a>
+                            <a href="<?php echo base_url("index/thai1"); ?>" class="list-group-item"><span class="badge">12</span> Thai 1</a>
                           <a href="#" class="list-group-item"><span class="badge">5</span> Thai 2</a>
                           <a href="#" class="list-group-item"><span class="badge">3</span> Thai 3</a>
                         </div>
@@ -140,7 +141,7 @@
 
                 </div>
 
-                <div class="col-md-9">
+                <div class="col-md-9 col-xs-9">
 <?php echo $output; ?>
                 </div>
 
