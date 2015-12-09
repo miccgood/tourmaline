@@ -80,13 +80,13 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="#">About</a>
+                            <a href="#">Home</a>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <a href="#">About Us</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="#">Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -95,7 +95,7 @@
             <!-- /.container -->
         </nav>
 
-        <img src="<?php echo base_url("assets/themes/default/images/bg-header-02.png") ?>" width="100%"/>
+        <!--<img src="<?php echo base_url("assets/themes/default/images/bg-header-02.png") ?>" width="100%"/>-->
 
         <!-- Page Content -->
         <div class="container" style="margin-top: 20px">
