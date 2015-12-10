@@ -1,45 +1,76 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class MY_Controller  extends CI_Controller {
+class MY_Controller extends CI_Controller {
 
-	function __construct()
-	{
-            parent::__construct();
+    function __construct()
+    {
+        parent::__construct();
+//        $this->load->helper('url');
+//        $this->load->library('session');
+//        $this->load->library('parser');
+        $this->load->model('TourmalineModel', "t");
+        $this->_init();
+    }
 
-            $this->load->helper('url');
-            
-            $this->load->library('parser');
-            $this->_init();
-	}
+    private function _init()
+    {
+        $this->output->set_template('tour');
+    }
 
-	private function _init()
-	{
-            $this->output->set_template('tour');
-	}
+    public function index()
+    {
+        $lang = $this->getSessionLang();
+        $sideBar = $this->t->getSideBar($lang);
+        $group_category = array();
+        foreach ($sideBar as $value) {
+            $id = $value["id"];
+            if(array_key_exists($id, $group_category)){
+                $category = $group_category[$id];
+                array_push($category->arr,  $value["category_name" . $lang]);
+            } else {
+                $category = new stdClass();
+                $category->name = $value["name" . $lang];
+                $category->icon = $value["icon"];
+                $category->arr = array();
+                array_push($category->arr,  $value["category_name" . $lang]);
+                $group_category[$id] = $category;
+            }
+        }
 
-	public function index()
-	{
-            $this->parser->parse('pages/index', array());
-	}
-//	public function example_3()
-//	{
-//		$this->load->section('sidebar', 'ci_simplicity/sidebar');
-//		$this->load->view('ci_simplicity/example_3', array("test" => "testsasdf"));
-//                
-//                
-//            $data = array(
-//                    'blog_title'   => 'My Blog Title',
-//                    'blog_heading' => 'My Blog Heading',
-//                    'blog_entries' => array(
-//                            array('title' => 'Title 1', 'body' => 'Body 1'),
-//                            array('title' => 'Title 2', 'body' => 'Body 2'),
-//                            array('title' => 'Title 3', 'body' => 'Body 3'),
-//                            array('title' => 'Title 4', 'body' => 'Body 4'),
-//                            array('title' => 'Title 5', 'body' => 'Body 5')
-//                    )
-//            );
-//
-////            $this->parser->parse('pages/header', $data);
-//
-//	}
+        
+        $banner = $this->t->getBanner();
+        
+        $this->parser->parse('pages/index', array(
+            "group_category" => $group_category,
+            "banner" => $banner));
+    }
+    
+    public function setLang($lang)
+    {
+        switch ($lang) {
+            case 'th':
+                $this->setSessionLang("");
+                break;
+            case 'en':
+                $this->setSessionLang("_eng");
+                break;
+            default:
+                break;
+        }
+        $this->output->unset_template();
+        echo $this->getSessionLang();
+    }
+    
+    private function setSessionLang($lang)
+    {
+        $this->session->set_userdata("language", $lang);
+    }
+    
+    function getSessionLang()
+    {
+        return $this->session->userdata("language");
+    }
 }
+
+
+
