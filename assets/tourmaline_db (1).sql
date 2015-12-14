@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2015 at 02:54 AM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Generation Time: Dec 14, 2015 at 11:35 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.5.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `tourmaline_db`
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `banner` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   `link` varchar(450) DEFAULT NULL,
   `show` int(1) DEFAULT NULL
@@ -53,7 +53,7 @@ INSERT INTO `banner` (`id`, `name`, `link`, `show`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `category_name` varchar(45) DEFAULT NULL,
   `category_name_eng` varchar(45) DEFAULT NULL,
   `category_link` varchar(255) NOT NULL,
@@ -114,100 +114,28 @@ INSERT INTO `category` (`id`, `category_name`, `category_name_eng`, `category_li
 -- --------------------------------------------------------
 
 --
--- Table structure for table `example_1`
---
-
-CREATE TABLE IF NOT EXISTS `example_1` (
-  `id` int(11) NOT NULL,
-  `url` varchar(250) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=178 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `example_1`
---
-
-INSERT INTO `example_1` (`id`, `url`) VALUES
-(172, 'c360-9.jpg'),
-(176, 'b7b8-18.jpg'),
-(177, '3fd6-21.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `example_2`
---
-
-CREATE TABLE IF NOT EXISTS `example_2` (
-  `id` int(11) NOT NULL,
-  `url` varchar(250) DEFAULT NULL,
-  `priority` int(11) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `example_2`
---
-
-INSERT INTO `example_2` (`id`, `url`, `priority`) VALUES
-(172, 'eb4f-51.jpg', 1),
-(173, 'ac84-52.jpg', 3),
-(176, '7ad8-63.jpg', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `example_3`
---
-
-CREATE TABLE IF NOT EXISTS `example_3` (
-  `id` int(11) NOT NULL,
-  `url` varchar(250) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `priority` int(11) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=181 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `example_3`
---
-
-INSERT INTO `example_3` (`id`, `url`, `category_id`, `priority`) VALUES
-(172, 'a48d-88.jpg', 2, 3),
-(173, '5e32-89.jpg', 22, 1),
-(174, '7628-90.jpg', 22, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `example_4`
---
-
-CREATE TABLE IF NOT EXISTS `example_4` (
-  `id` int(11) NOT NULL,
-  `title` varchar(250) NOT NULL,
-  `url` varchar(250) DEFAULT NULL,
-  `priority` int(11) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=193 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `example_4`
---
-
-INSERT INTO `example_4` (`id`, `title`, `url`, `priority`) VALUES
-(172, 'My house!', 'eb4f-51.jpg', 1),
-(173, 'Some flowers', 'ac84-52.jpg', 3),
-(176, 'My garden!', '7ad8-63.jpg', 2);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `gallery`
 --
 
 CREATE TABLE IF NOT EXISTS `gallery` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `gallery_header` varchar(45) DEFAULT NULL,
   `gallery_details` varchar(45) DEFAULT NULL,
-  `gallery_link` varchar(450) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `gallery_link` varchar(450) DEFAULT NULL,
+  `gallery_priority` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  `show` int(1) DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`id`, `gallery_header`, `gallery_details`, `gallery_link`, `gallery_priority`, `category_id`, `show`) VALUES
+(5, NULL, NULL, '9e897-22.jpg', 1, 1, 1),
+(6, NULL, NULL, 'd64f5-22.jpg', 4, 1, 1),
+(7, NULL, NULL, '1bab0-4k-wallpaper.jpg', 2, 1, 1),
+(8, NULL, NULL, '4e2cc-4k-image-santiago.jpg', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -216,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `gallery` (
 --
 
 CREATE TABLE IF NOT EXISTS `group_category` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `name_eng` varchar(255) NOT NULL,
   `icon` varchar(255) DEFAULT NULL,
@@ -281,7 +209,7 @@ INSERT INTO `group_category` (`id`, `name`, `name_eng`, `icon`, `show`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pages` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `page_name` varchar(45) NOT NULL,
   `page_h_header` varchar(45) NOT NULL,
   `page_s_header` varchar(45) DEFAULT NULL,
@@ -306,7 +234,7 @@ INSERT INTO `pages` (`id`, `page_name`, `page_h_header`, `page_s_header`, `page_
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `product_code` varchar(45) DEFAULT NULL,
   `product_banner_link` varchar(450) DEFAULT NULL,
   `product_country` varchar(45) NOT NULL,
@@ -343,64 +271,37 @@ INSERT INTO `product` (`id`, `product_code`, `product_banner_link`, `product_cou
 -- Indexes for table `banner`
 --
 ALTER TABLE `banner`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `g_category_id_idx` (`g_category_id`);
-
---
--- Indexes for table `example_1`
---
-ALTER TABLE `example_1`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `example_2`
---
-ALTER TABLE `example_2`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `example_3`
---
-ALTER TABLE `example_3`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `example_4`
---
-ALTER TABLE `example_4`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `g_category_id_idx` (`g_category_id`);
 
 --
 -- Indexes for table `gallery`
 --
 ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `f_category_id_idx` (`category_id`);
 
 --
 -- Indexes for table `group_category`
 --
 ALTER TABLE `group_category`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `page_name_UNIQUE` (`page_name`);
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `page_name_UNIQUE` (`page_name`);
 
 --
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id_idx` (`category_id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `category_id_idx` (`category_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -410,47 +311,32 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
--- AUTO_INCREMENT for table `example_1`
+-- AUTO_INCREMENT for table `gallery`
 --
-ALTER TABLE `example_1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=178;
---
--- AUTO_INCREMENT for table `example_2`
---
-ALTER TABLE `example_2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=182;
---
--- AUTO_INCREMENT for table `example_3`
---
-ALTER TABLE `example_3`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=181;
---
--- AUTO_INCREMENT for table `example_4`
---
-ALTER TABLE `example_4`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=193;
+ALTER TABLE `gallery`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `group_category`
 --
 ALTER TABLE `group_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
@@ -459,13 +345,19 @@ ALTER TABLE `product`
 -- Constraints for table `category`
 --
 ALTER TABLE `category`
-  ADD CONSTRAINT `g_category_id` FOREIGN KEY (`g_category_id`) REFERENCES `group_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `g_category_id` FOREIGN KEY (`g_category_id`) REFERENCES `group_category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `gallery`
+--
+ALTER TABLE `gallery`
+ADD CONSTRAINT `f_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ADD CONSTRAINT `category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
