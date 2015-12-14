@@ -13,6 +13,11 @@
             </div>
             <hr>
             <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12" style="">
+                    <h3 class="product-header"> {product_header} </h3>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="row">
                         <label class="col-lg-3 col-md-3 col-sm-3">ประเทศ</label>
@@ -21,7 +26,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-lg-3 col-md-3 col-sm-3">Code</label>
+                        <label class="col-lg-3 col-md-3 col-sm-3">รหัส</label>
                         <div class="col-lg-9 col-md-9 col-sm-9">
                             {product_code}
                         </div>
@@ -51,7 +56,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 product-detail">
                             {product_details}
                         </div>
                     </div>

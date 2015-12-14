@@ -85,6 +85,9 @@
                             </li>
                             <li><a href="#" class="changeLang" data="th">TH</a></li>
                             <li><a href="#" class="changeLang" data="en">EN</a></li>
+                            
+
+                            
                             <!--<li><a href="<?php echo base_url("admin") ?>" >Admin</a></li>-->
 
                         </ul>

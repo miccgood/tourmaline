@@ -44,6 +44,24 @@ body {
     white-space: nowrap;
 }
 
+.caption .header{
+    color: red;
+}
+.caption .price{
+    color: orange;
+}
+.product-header {
+    color: red;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+.product-details {
+    color: #FF5400;
+}
+.product-detail {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
 .thumbnail img {
     width: 99%;
     border-radius: 4px;
