@@ -8,6 +8,7 @@ class Constant
     private static $upload_banner_path ='assets/themes/default/images/banner/';
     private static $upload_product_banner_path ='assets/themes/default/images/product/';
     private static $upload_product_pdf_path ='assets/themes/default/images/pdf';
+    private static $upload_gallery_path ='assets/themes/default/images/gallery';
 
     public static function getImagePath($ext = "")
     {
@@ -30,4 +31,8 @@ class Constant
         return self::$upload_product_pdf_path.$ext;
     }
     
+    public static function getUploadGalleryPath($ext = "")
+    {
+        return self::$upload_gallery_path.$ext;
+    }
 }

@@ -6,7 +6,8 @@ class Gallery extends MY_Controller {
         parent::__construct();
     }
 
-    public function index($categoryId = null, $productId = null) {
+    public function index() {
+        
 //        $lang = $this->getSessionLang();
 //
 //        $product = array();

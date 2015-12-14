@@ -18,61 +18,91 @@ class Admin extends MY_Controller {
         $crud->set_theme('flexigrid');
         return $crud;
     }
-    
-//    public function gallery() {
-//        try {
-//            
-//            $crud = $this->getCrud();
-//            $crud->set_table('gallery');
-//            $crud->set_subject('Gallery');
-//            $crud->columns("page_name", "page_h_header", "page_s_header", 'page_details');
-//            
-//            $crud->display_as('page_name', 'Name');
-//            $crud->display_as('page_h_header', 'Header');
-//            $crud->display_as('page_s_header', 'Sub Header');
-//            $crud->display_as('page_details', 'Details');
-//            
-//            $output = $crud->render();
-//            $this->output($output);
-//        } catch (Exception $e) {
-//            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
-//        }
-//    }
-//    
-    public function pages() {
+
+    public function gallery($category_id = null) {
         try {
             
+            $crud = $this->getCrud();
+            $crud->set_table('gallery');
+            $crud->set_subject('Gallery');
+            $crud->columns( "category_id", "gallery_header", "gallery_link", "gallery_priority");
+            $crud->order_by('category_id, gallery_priority','desc');
+            $crud->set_relation('category_id', 'category', 'category_name');
+            
+            $crud->set_field_upload('gallery_link', Constant::getUploadGalleryPath());
+            
+            $crud->field_type('show', 'true_false');
+            
+            $crud->display_as('category_id', 'Category');
+            $crud->display_as('gallery_header', 'Header');
+            $crud->display_as('gallery_link', 'Image');
+            $crud->display_as('gallery_priority', 'Priority');
+            
+            $output = $crud->render();
+            $this->output($output);
+          } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+    
+    public function gallerys($category_id = null) {
+        try {
+
+            $this->load->library('Image_CRUD');
+            $image_crud = new Image_CRUD();
+
+            $image_crud->set_primary_key_field('id');
+            $image_crud->set_url_field('gallery_link');
+//            $image_crud->set_title_field('gallery_header');
+            $image_crud->set_table('gallery')
+                    ->set_ordering_field('gallery_priority')
+                    ->set_image_path(Constant::getUploadGalleryPath());
+//            if($category_id != null){
+                $image_crud->set_relation_field('category_id');
+//            }
+            
+            $output = $image_crud->render();
+//		$this->_example_output($output);
+            $this->output($output);
+        } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+
+    public function pages() {
+        try {
+
             $crud = $this->getCrud();
             $crud->set_table('pages');
             $crud->set_subject('Pages');
             $crud->columns("page_name", "page_h_header", "page_s_header", 'page_details');
-            
+
             $crud->display_as('page_name', 'Name');
             $crud->display_as('page_h_header', 'Header');
             $crud->display_as('page_s_header', 'Sub Header');
             $crud->display_as('page_details', 'Details');
-            
+
             $output = $crud->render();
             $this->output($output);
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
     }
-    
+
     public function product() {
         try {
-            
+
             $crud = $this->getCrud();
             $crud->set_table('product');
             $crud->set_subject('Product');
             $crud->columns('product_code', 'product_banner_link', 'category_id', "product_header", 'product_details', 'product_price', 'show', 'highlight');
-            
+
             $crud->set_field_upload('product_banner_link', Constant::getUploadProductBannerPath());
             $crud->set_field_upload('product_pdf_link', Constant::getUploadProductPdfPath());
-            $crud->set_relation('category_id','category','category_name');
-            
-            $crud->callback_column('product_price',array($this,'formatPrice'));
-            
+            $crud->set_relation('category_id', 'category', 'category_name');
+
+            $crud->callback_column('product_price', array($this, 'formatPrice'));
+
             $crud->add_action('Preview', '', 'product/', 'preview-icon', array($this, 'getPreviewUrl'));
 
             $crud->display_as('product_code', 'Code');
@@ -84,62 +114,61 @@ class Admin extends MY_Controller {
             $crud->display_as('product_period', 'Period');
             $crud->display_as('product_itinerary', 'Itinerary');
             $crud->display_as('category_id', 'Category');
-            
+
             $crud->display_as('product_country', 'Country');
             $crud->display_as('product_program', 'Program');
-            
-            
-            $crud->field_type('show','true_false');
-            $crud->field_type('highlight','true_false');
-            
+
+
+            $crud->field_type('show', 'true_false');
+            $crud->field_type('highlight', 'true_false');
+
             $output = $crud->render();
             $this->output($output);
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
     }
-    
-    function getPreviewUrl($primary_key , $row)
-    {
-        $url = base_url('product/index').'/'.$row->category_id.'/'.$primary_key;
+
+    function getPreviewUrl($primary_key, $row) {
+        $url = base_url('product/index') . '/' . $row->category_id . '/' . $primary_key;
         return $url;
     }
-    
-    public function formatPrice($value, $row)
-    {
+
+    public function formatPrice($value, $row) {
         return number_format($value, 0, '.', ',');
     }
+
     public function banner() {
         try {
             $crud = $this->getCrud();
             $crud->set_table('banner');
             $crud->set_subject('Banner');
             $crud->columns('name', 'link', 'show');
-            
-            $crud->field_type('show','true_false');
+
+            $crud->field_type('show', 'true_false');
             $crud->set_field_upload('link', Constant::getUploadBannerPath());
-            
+
             $output = $crud->render();
             $this->output($output);
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
     }
-    
+
     public function category() {
         try {
-            
+
             $lang = $this->getSessionLang();
-        
+
             $crud = $this->getCrud();
             $crud->set_table('category');
             $crud->set_subject('Category');
-            $crud->columns('g_category_id', 'category_name', 'category_name_eng' );
-            
-            $crud->set_relation('g_category_id','group_category','name'.$lang);
-            
+            $crud->columns('g_category_id', 'category_name', 'category_name_eng');
+
+            $crud->set_relation('g_category_id', 'group_category', 'name' . $lang);
+
             $crud->add_action('Gallery', '', 'product/', 'preview-icon', array($this, 'getGalleryUrl'));
-            
+
             $crud->display_as('category_name', 'Name');
             $crud->display_as('category_name_eng', 'Name Eng');
             $crud->display_as('g_category_id', 'Group');
@@ -149,10 +178,9 @@ class Admin extends MY_Controller {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
     }
-    
-    function getGalleryUrl($primary_key , $row)
-    {
-        $url = base_url('images_examples/example3').'/'.$primary_key;
+
+    function getGalleryUrl($primary_key, $row) {
+        $url = base_url('admin/gallerys') . '/' . $primary_key;
 //        $url = base_url('gallery/index').'/'.$row->category_id.'/'.$primary_key;
         return $url;
     }
@@ -163,9 +191,9 @@ class Admin extends MY_Controller {
             $crud->set_table('group_category');
             $crud->set_subject('Group');
             $crud->columns('icon', 'name', 'name_eng', 'show');
-            $crud->field_type('show','true_false');
+            $crud->field_type('show', 'true_false');
             $crud->set_field_upload('icon', Constant::getUploadIconPath());
-            
+
             $crud->callback_after_upload(array($this, 'callback_after_upload'));
             $output = $crud->render();
             $this->output($output);
