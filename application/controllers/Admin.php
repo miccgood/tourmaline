@@ -15,13 +15,102 @@ class Admin extends MY_Controller {
 
     private function getCrud() {
         $crud = new grocery_CRUD();
-        $crud->set_theme('datatables');
+        $crud->set_theme('flexigrid');
         return $crud;
+    }
+    
+//    public function gallery() {
+//        try {
+//            
+//            $crud = $this->getCrud();
+//            $crud->set_table('gallery');
+//            $crud->set_subject('Gallery');
+//            $crud->columns("page_name", "page_h_header", "page_s_header", 'page_details');
+//            
+//            $crud->display_as('page_name', 'Name');
+//            $crud->display_as('page_h_header', 'Header');
+//            $crud->display_as('page_s_header', 'Sub Header');
+//            $crud->display_as('page_details', 'Details');
+//            
+//            $output = $crud->render();
+//            $this->output($output);
+//        } catch (Exception $e) {
+//            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+//        }
+//    }
+//    
+    public function pages() {
+        try {
+            
+            $crud = $this->getCrud();
+            $crud->set_table('pages');
+            $crud->set_subject('Pages');
+            $crud->columns("page_name", "page_h_header", "page_s_header", 'page_details');
+            
+            $crud->display_as('page_name', 'Name');
+            $crud->display_as('page_h_header', 'Header');
+            $crud->display_as('page_s_header', 'Sub Header');
+            $crud->display_as('page_details', 'Details');
+            
+            $output = $crud->render();
+            $this->output($output);
+        } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+    
+    public function product() {
+        try {
+            
+            $crud = $this->getCrud();
+            $crud->set_table('product');
+            $crud->set_subject('Product');
+            $crud->columns('product_code', 'product_banner_link', 'category_id', "product_header", 'product_details', 'product_price', 'show', 'highlight');
+            
+            $crud->set_field_upload('product_banner_link', Constant::getUploadProductBannerPath());
+            $crud->set_field_upload('product_pdf_link', Constant::getUploadProductPdfPath());
+            $crud->set_relation('category_id','category','category_name');
+            
+            $crud->callback_column('product_price',array($this,'formatPrice'));
+            
+            $crud->add_action('Preview', '', 'product/', 'preview-icon', array($this, 'getPreviewUrl'));
+
+            $crud->display_as('product_code', 'Code');
+            $crud->display_as('product_banner_link', 'Banner');
+            $crud->display_as('product_header', 'Header');
+            $crud->display_as('product_sub_header', 'Sub Header');
+            $crud->display_as('product_details', 'Detials');
+            $crud->display_as('product_price', 'price');
+            $crud->display_as('product_period', 'Period');
+            $crud->display_as('product_itinerary', 'Itinerary');
+            $crud->display_as('category_id', 'Category');
+            
+            $crud->display_as('product_country', 'Country');
+            $crud->display_as('product_program', 'Program');
+            
+            
+            $crud->field_type('show','true_false');
+            $crud->field_type('highlight','true_false');
+            
+            $output = $crud->render();
+            $this->output($output);
+        } catch (Exception $e) {
+            show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
+        }
+    }
+    
+    function getPreviewUrl($primary_key , $row)
+    {
+        $url = base_url('product/index').'/'.$row->category_id.'/'.$primary_key;
+        return $url;
+    }
+    
+    public function formatPrice($value, $row)
+    {
+        return number_format($value, 0, '.', ',');
     }
     public function banner() {
         try {
-            
-            $lang = $this->getSessionLang();
             $crud = $this->getCrud();
             $crud->set_table('banner');
             $crud->set_subject('Banner');
@@ -49,6 +138,8 @@ class Admin extends MY_Controller {
             
             $crud->set_relation('g_category_id','group_category','name'.$lang);
             
+            $crud->add_action('Gallery', '', 'product/', 'preview-icon', array($this, 'getGalleryUrl'));
+            
             $crud->display_as('category_name', 'Name');
             $crud->display_as('category_name_eng', 'Name Eng');
             $crud->display_as('g_category_id', 'Group');
@@ -57,6 +148,13 @@ class Admin extends MY_Controller {
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
+    }
+    
+    function getGalleryUrl($primary_key , $row)
+    {
+        $url = base_url('images_examples/example3').'/'.$primary_key;
+//        $url = base_url('gallery/index').'/'.$row->category_id.'/'.$primary_key;
+        return $url;
     }
 
     public function group() {
@@ -140,7 +238,8 @@ class Admin extends MY_Controller {
     }
 
     public function index() {
-        $this->output((object) array('output' => '', 'js_files' => array(), 'css_files' => array()));
+        $this->group();
+//        $this->output((object) array('output' => '', 'js_files' => array(), 'css_files' => array()));
     }
 
     public function offices_management() {

@@ -1082,11 +1082,11 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: cursive, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: #f2f2f2;
 }
 input,
 button,
@@ -1147,6 +1147,12 @@ img {
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+.thumbnail hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
   border: 0;
   border-top: 1px solid #eee;
 }
@@ -4000,7 +4006,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li.disabled > a:focus {
   color: #777;
   text-decoration: none;
-  cursor: not-allowed;
+  cursor: text;
   background-color: transparent;
 }
 .nav .open > a,
@@ -4244,7 +4250,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-static-top {
-  z-index: 1000;
+  z-index: -1;
   border-width: 0 0 1px;
 }
 @media (min-width: 768px) {
@@ -4276,7 +4282,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  height: 50px;
+  height: auto;
   padding: 0px;
   font-size: 18px;
   line-height: 20px;
@@ -4496,9 +4502,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: rgba(0,0,0,0.8);
-  border-color: #ff0000;
+  background-color: rgba(254,254,254,0.8);
+  border-color: #d6d6d6;
 }
+
+.navbar-default.box-shadow{
+    box-shadow: 0 .1em 1em #ddd;
+}
+
 .navbar-default .navbar-brand {
   color: #fff;
 }
@@ -4511,11 +4522,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #fff;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #fff;
+  color: #8b8b8b;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #ddd;
+  color: #9f9f9f;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a{
@@ -5010,11 +5021,14 @@ a.badge:focus {
   line-height: 1.42857143;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
   -webkit-transition: border .2s ease-in-out;
        -o-transition: border .2s ease-in-out;
           transition: border .2s ease-in-out;
 }
+.thumbnail:hover{
+    box-shadow: 0 .1em 1em #777;
+} 
 .thumbnail > img,
 .thumbnail a > img {
   margin-right: auto;
@@ -5255,7 +5269,7 @@ a.thumbnail.active {
   display: block;
   padding: 10px 15px;
   margin-bottom: -1px;
-  background-color: #fff;
+  background-color: #d9e9fb;
   border: 1px solid #ddd;
 }
 .list-group-item:first-child {
@@ -5279,9 +5293,9 @@ a.list-group-item:hover,
 button.list-group-item:hover,
 a.list-group-item:focus,
 button.list-group-item:focus {
-  color: #555;
+  /*color: #555;*/
   text-decoration: none;
-  background-color: #f5f5f5;
+  /*background-color: #f5f5f5;*/
 }
 button.list-group-item {
   width: 100%;

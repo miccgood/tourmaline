@@ -2,6 +2,7 @@
 
 class MY_Controller extends CI_Controller {
 
+    protected $indexData = array();
     function __construct()
     {
         parent::__construct();
@@ -10,6 +11,8 @@ class MY_Controller extends CI_Controller {
 //        $this->load->library('parser');
         $this->load->model('TourmalineModel', "t");
         $this->_init();
+        
+        $this->indexData = $this->getIndexData();
     }
 
     private function _init()
@@ -17,32 +20,21 @@ class MY_Controller extends CI_Controller {
         $this->output->set_template('tour');
     }
 
+    public function getIndexData(){
+        $lang = $this->getSessionLang();
+        $group_category = $this->t->getSideBar($lang);
+        $banner = $this->t->getBanner();
+        $footer = $this->t->getFooter();
+        
+        return array(
+            "group_category" => $group_category,
+            "banner" => $banner,
+            "footers" => $footer);
+    }
+    
     public function index()
     {
-        $lang = $this->getSessionLang();
-        $sideBar = $this->t->getSideBar($lang);
-        $group_category = array();
-        foreach ($sideBar as $value) {
-            $id = $value["id"];
-            if(array_key_exists($id, $group_category)){
-                $category = $group_category[$id];
-                array_push($category->arr,  $value["category_name" . $lang]);
-            } else {
-                $category = new stdClass();
-                $category->name = $value["name" . $lang];
-                $category->icon = $value["icon"];
-                $category->arr = array();
-                array_push($category->arr,  $value["category_name" . $lang]);
-                $group_category[$id] = $category;
-            }
-        }
-
-        
-        $banner = $this->t->getBanner();
-        
-        $this->parser->parse('pages/index', array(
-            "group_category" => $group_category,
-            "banner" => $banner));
+        $this->parser->parse('pages/index', $this->getIndexData());
     }
     
     public function setLang($lang)
