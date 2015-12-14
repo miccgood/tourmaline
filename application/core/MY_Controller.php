@@ -18,6 +18,7 @@ class MY_Controller extends CI_Controller {
     private function _init()
     {
         $this->output->set_template('tour');
+        $this->output->set_title("Tourmaline-Travel.com");
     }
 
     public function getIndexData(){

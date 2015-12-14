@@ -94,7 +94,9 @@ class TourmalineModel extends CI_Model {
             $this->db->from('category');
             $this->db->join('group_category', 'group_category.id = category.g_category_id');
             $this->db->where('category.id', $categoryId);
-            return $this->db->get()->result_array()[0];
+            
+            $result_array = $this->db->get()->result_array();
+            return $result_array[0];
     }
     
     function getPagesByName($pageName){
@@ -102,7 +104,8 @@ class TourmalineModel extends CI_Model {
             $this->db->select("*");
             $this->db->from('pages');
             $this->db->where('page_name', $pageName);
-            return $this->db->get()->result_array()[0];
+            $result_array = $this->db->get()->result_array();
+            return $result_array[0];
     }
     
     function getProductById($productById){
@@ -110,6 +113,7 @@ class TourmalineModel extends CI_Model {
             $this->db->from('product');
             $this->db->where('show', 1); 
             $this->db->where('id', $productById);
-            return $this->db->get()->result_array()[0];
+            $result_array = $this->db->get()->result_array();
+            return $result_array[0];
     }
 }
