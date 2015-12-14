@@ -48,7 +48,7 @@ body {
     width: 99%;
     border-radius: 4px;
     margin-top: 2px;
-    max-height: 200px;
+    height: 200px;
 }
 
 .ratings {
