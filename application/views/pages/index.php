@@ -13,10 +13,10 @@
                     <div class="caption">
 
                         <!--<h4 class="pull-right"><?php echo number_format($product["product_price"], 0, '.', ','); ?> บาท</h4>-->
-                        <h4 class="header">
+                        <h5 class="header">
                             <?php echo $product["product_header"] ?>
-                        </h4>
-                        <h4 class="price">ราคา <?php echo number_format($product["product_price"], 0, '.', ','); ?> บาท</h4>
+                        </h5>
+                        <h5 class="price">ราคา <?php echo number_format($product["product_price"], 0, '.', ','); ?> บาท</h5>
                         <div class="subHeader">
                             <?php echo $product["product_sub_header"] ?>
                         </div>

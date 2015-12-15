@@ -57,11 +57,11 @@
     <body>
         <!-- Navigation -->
         <nav class="navbar navbar-default box-shadow" >
-            <div class="container">
+            <div class="container container-nav">
 
                 <div class="collapse navbar-collapse col-lg-6 col-md-6">
                     <ul class="nav navbar-nav  navbar-left">
-                        <li><img src="<?php echo base_url("assets/themes/default/images/logo-01.png") ?>" width="400px"/></li>
+                        <li><img src="<?php echo base_url("assets/themes/default/images/logo-01.png") ?>" width="400px" /></li>
                     </ul>
                 </div> 
 
@@ -75,8 +75,6 @@
                     <!--<a class="navbar-brand" href="#">Project name</a>-->
                 </div>
 
-
-
                 <div class="collapse navbar-collapse navbar-right col-lg-6 col-md-6">
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -85,11 +83,6 @@
                             </li>
                             <li><a href="#" class="changeLang" data="th">TH</a></li>
                             <li><a href="#" class="changeLang" data="en">EN</a></li>
-                            
-
-                            
-                            <!--<li><a href="<?php echo base_url("admin") ?>" >Admin</a></li>-->
-
                         </ul>
                     </div>
                     <div class="collapse navbar-collapse">
@@ -119,28 +112,35 @@
 
             <div class="row">
 
-                <div class="col-md-3 col-xs-3">
-                    <div id="accordion">
-                        <?php
-                        foreach ($group_category as $value) {
-                            echo "<h3>";
-                            if ($value->icon) {
-                                echo "<img src='" . base_url(Constant::getUploadIconPath() . $value->icon) . "' /> ";
-                            }
-                            echo $value->name . "</h3>";
-                            echo '<div class="list-group">';
-                            foreach ($value->arr as $arr) {
-                                echo '<a href="' . base_url($value->link) . '" class="list-group-item">' . $arr . '</a>';
+                <div class="col-md-2 col-xs-2">
+<!--<section id="events"><header><h2>Events</h2></header>-->
+                    <div class="well accordion">
+
+                        <h5>Tours Destination</h5>
+                        <div id="accordion">
+                            <?php
+                            foreach ($group_category as $value) {
+                                echo "<h3>";
+                                if ($value->icon) {
+                                    echo "<img src='" . base_url(Constant::getUploadIconPath() . $value->icon) . "' /> ";
+                                }
+                                echo $value->name . "</h3>";
+                                echo '<div class="list-group">';
+                                foreach ($value->arr as $arr) {
+                                    echo '<a href="' . base_url($value->link) . '" class="list-group-item">' . $arr . '</a>';
 //                            <span class="badge">12</span>
+                                }
+                                echo '</div>';
                             }
-                            echo '</div>';
-                        }
-                        ?>
+                            ?>
+                        </div>
                     </div>
+                    
+                    <iframe height=160 src="http://www.siamvip.com/ManageFiles/counter/?web=http://tourmalinetravel.com/" frameBorder=0 width=161 scrolling=no></iframe>
+
+                    <!--</section>-->
                 </div>
-                <div class="col-md-9 col-xs-9">
-
-
+                <div class="col-md-10 col-xs-10">
 
                     <div class="row carousel-holder">
 
@@ -179,7 +179,7 @@
 
             </div>
 
-            <hr>
+            <!--<hr>-->
             <!-- Footer -->
             <footer>
                 <div class="row">

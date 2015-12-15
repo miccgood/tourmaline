@@ -13,7 +13,7 @@ body {
 .body-container{
     margin-top: 20px; 
     padding-top: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 0px;
     border-radius: 4px;
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -85,10 +85,15 @@ body {
 }
 
 footer {
-    margin: 50px 0;
+    margin: 50px 0px 0px;
 }
 
 
+footer .row {
+    padding: 20px 0px;
+    background-color: #606060;
+    border-radius: 0px 0px 4px 4px;
+}
 
 .product {
     display: block;
@@ -147,4 +152,14 @@ a.product.active {
 
 .thumb {
     margin-bottom: 30px;
+}
+
+.well.accordion{
+    padding: 4px; 
+    background-color: #ECC279;
+}
+.well.accordion h5{
+    font-weight: bold;
+    text-align: center;
+    color:#4C4C4C;
 }
