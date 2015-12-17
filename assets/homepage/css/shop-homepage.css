@@ -15,7 +15,7 @@ body {
     padding-top: 15px;
     padding-bottom: 0px;
     border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 .box-shadow {
     box-shadow: 0 .1em 1em #777;
@@ -91,7 +91,7 @@ footer {
 
 footer .row {
     padding: 20px 0px;
-    background-color: #606060;
+    background-color: #8f8f8f;
     border-radius: 0px 0px 4px 4px;
 }
 
@@ -158,8 +158,11 @@ a.product.active {
     padding: 4px; 
     background-color: #ECC279;
 }
-.well.accordion h5{
-    font-weight: bold;
+.well.accordion h2{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /*font-weight: bold;*/
     text-align: center;
     color:#4C4C4C;
+    font-family: Brush Script MT;
 }

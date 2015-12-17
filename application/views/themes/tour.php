@@ -110,13 +110,46 @@
         <!-- Page Content -->
         <div class="container body-container box-shadow">
 
+            <div class="row carousel-holder">
+
+                <div class="col-md-3-5 col-xs-3-5">
+                    
+                </div>
+                <div class="col-md-9-5 col-xs-9-5">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <?php
+                            foreach ($banner as $key => $value) {
+                                echo '<li data-target="#carousel-example-generic" data-slide-to="' . $key . '" class="' . ($key === 0 ? "active" : "") . '"></li>';
+                            }
+                            ?>
+                        </ol>
+                        <div class="carousel-inner">
+                            <?php
+                            foreach ($banner as $key => $value) {
+                                echo '<div class="item ' . ($key === 0 ? "active" : "") . '">';
+                                echo '<img class="slide-image" src="' . base_url(Constant::getUploadBannerPath() . $value["link"]) . '">';
+                                echo '</div>';
+                            }
+                            ?>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
             <div class="row">
 
-                <div class="col-md-2 col-xs-2">
+                <div class="col-md-3-5 col-xs-3-5">
 <!--<section id="events"><header><h2>Events</h2></header>-->
                     <div class="well accordion">
-
-                        <h5>Tours Destination</h5>
+                        <h2>Tour Destinations</h2>
                         <div id="accordion">
                             <?php
                             foreach ($group_category as $value) {
@@ -135,43 +168,12 @@
                             ?>
                         </div>
                     </div>
-                    
-                    <iframe height=160 src="http://www.siamvip.com/ManageFiles/counter/?web=http://tourmalinetravel.com/" frameBorder=0 width=161 scrolling=no></iframe>
+
+                    <iframe height=160 width="100%" src="http://www.siamvip.com/ManageFiles/counter/?web=http://tourmalinetravel.com/" frameBorder=1 scrolling=no></iframe>
 
                     <!--</section>-->
                 </div>
-                <div class="col-md-10 col-xs-10">
-
-                    <div class="row carousel-holder">
-
-                        <div class="col-md-12">
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <?php
-                                    foreach ($banner as $key => $value) {
-                                        echo '<li data-target="#carousel-example-generic" data-slide-to="' . $key . '" class="' . ($key === 0 ? "active" : "") . '"></li>';
-                                    }
-                                    ?>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <?php
-                                    foreach ($banner as $key => $value) {
-                                        echo '<div class="item ' . ($key === 0 ? "active" : "") . '">';
-                                        echo '<img class="slide-image" src="' . base_url(Constant::getUploadBannerPath() . $value["link"]) . '">';
-                                        echo '</div>';
-                                    }
-                                    ?>
-                                </div>
-                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="col-md-9-5 col-xs-9-5">
 
                     <?php echo $output; ?>
 

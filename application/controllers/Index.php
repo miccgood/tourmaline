@@ -21,7 +21,7 @@ class Index extends MY_Controller {
             
         } else {
             $products = $this->t->getProductHighLight();
-            $this->indexData["h_header"] = "Highlight";
+            $this->indexData["h_header"] = "Hilight";
             $this->indexData["s_header"] = "";
         }
         $this->indexData["products"] = $products;

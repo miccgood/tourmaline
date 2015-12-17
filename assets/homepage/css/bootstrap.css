@@ -1091,18 +1091,17 @@ body {
   
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%), url(bg.png) repeat 0 0, url(../../../assets/themes/default/images/noise.png) repeat 0 0;
 
-    background: -moz-linear-gradient(top, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.4) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
+    background: -moz-linear-gradient(top, rgba(205,217,179,0.6) 0%, rgba(205,217,179,0.6) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
 
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.4)), color-stop(100%,rgba(255,255,255,0.4))), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(205,217,179,0.6)), color-stop(100%,rgba(205,217,179,0.6))), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
 
-    background: -webkit-linear-gradient(top, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.4) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
+    background: -webkit-linear-gradient(top, rgba(205,217,179,0.6) 0%,rgba(205,217,179,0.6) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
 
-    background: -o-linear-gradient(top, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.4) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
+    background: -o-linear-gradient(top, rgba(205,217,179,0.6) 0%,rgba(205,217,179,0.6) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
 
-    background: -ms-linear-gradient(top, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.4) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
+    background: -ms-linear-gradient(top, rgba(205,217,179,0.6) 0%,rgba(205,217,179,0.6) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
 
-    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%,rgba(255,255,255,0.4) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
-
+    background: linear-gradient(to bottom, rgba(205,217,179,0.6) 0%,rgba(205,217,179,0.6) 100%), url(../../../assets/themes/default/images/noise.png) repeat 0 0;
 
 }
 input,
@@ -1664,13 +1663,13 @@ pre code {
   margin-right: -15px;
   margin-left: -15px;
 }
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-xs-3-5, .col-sm-3, .col-md-3, .col-md-3-5, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-xs-9-5, .col-sm-9, .col-md-9, .col-md-9-5, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
 }
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-3-5, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-9-5, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
 .col-xs-12 {
@@ -1681,6 +1680,9 @@ pre code {
 }
 .col-xs-10 {
   width: 83.33333333%;
+}
+.col-xs-9-5 {
+  width: 79.16666667%;
 }
 .col-xs-9 {
   width: 75%;
@@ -1699,6 +1701,9 @@ pre code {
 }
 .col-xs-4 {
   width: 33.33333333%;
+}
+.col-xs-3-5{
+  width: 20.83333333%;
 }
 .col-xs-3 {
   width: 25%;
@@ -1985,7 +1990,7 @@ pre code {
   }
 }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-3-5, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-9-5, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
   }
   .col-md-12 {
@@ -1996,6 +2001,9 @@ pre code {
   }
   .col-md-10 {
     width: 83.33333333%;
+  }
+  .col-md-9-5 {
+    width: 79.16666667%;
   }
   .col-md-9 {
     width: 75%;
@@ -2014,6 +2022,9 @@ pre code {
   }
   .col-md-4 {
     width: 33.33333333%;
+  }
+  .col-md-3-5{
+    width: 20.83333333%;
   }
   .col-md-3 {
     width: 25%;
@@ -4586,7 +4597,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
 .navbar-default .navbar-nav > .disabled > a:focus {
-  color: #ccc;
+  color: #fa3d0a;
   background-color: transparent;
 }
 .navbar-default .navbar-toggle {
@@ -6302,7 +6313,7 @@ button.close {
 }
 .carousel {
   position: relative;
-  height: 300px;
+  height: 350px;
   overflow: hidden;
 }
 .carousel-inner {
