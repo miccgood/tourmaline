@@ -12,7 +12,7 @@ class MY_Controller extends CI_Controller {
         $this->load->model('TourmalineModel', "t");
         $this->_init();
         
-        $this->indexData = $this->getIndexData();
+        $this->indexData = array_merge($this->indexData, $this->getIndexData());
     }
 
     private function _init()

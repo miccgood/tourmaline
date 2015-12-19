@@ -91,7 +91,7 @@ footer {
 
 footer .row {
     padding: 20px 0px;
-    background-color: #8f8f8f;
+    background-color: #dfdfdf;
     border-radius: 0px 0px 4px 4px;
 }
 
@@ -158,11 +158,11 @@ a.product.active {
     padding: 4px; 
     background-color: #ECC279;
 }
-.well.accordion h2{
+.well.accordion h4{
     margin-top: 5px;
     margin-bottom: 5px;
     /*font-weight: bold;*/
     text-align: center;
     color:#4C4C4C;
-    font-family: Brush Script MT;
+    /*font-family: Brush Script MT;*/
 }

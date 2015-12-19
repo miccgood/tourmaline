@@ -1,7 +1,8 @@
 <div class="row">
 
             <div class="col-lg-12">
-                <h1 class="page-header">Thumbnail Gallery</h1>
+                <!--<h1 class="page-header">Gallery</h1>-->
+                <h2> <font style="color: #5D5D5D;"> Gallery </font> <span class="small"></span></h2>
             </div>
 
             <div class="col-lg-3 col-md-4 col-xs-6 thumb">

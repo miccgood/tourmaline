@@ -3,6 +3,7 @@
 class Product extends MY_Controller {
 
     function __construct() {
+        $this->indexData["menu_header"] = "product";
         parent::__construct();
     }
 
@@ -18,7 +19,7 @@ class Product extends MY_Controller {
             $this->indexData["s_header"] = $highLight["category_name"];
         } else {
             $product = $this->t->getProductHighLight();
-            $this->indexData["h_header"] = "Hilight";
+            $this->indexData["h_header"] = "Highlights";
             $this->indexData["s_header"] = "";
         }
         $this->indexData = array_merge($this->indexData , $product);

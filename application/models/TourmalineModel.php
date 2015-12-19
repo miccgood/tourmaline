@@ -9,6 +9,16 @@ class TourmalineModel extends CI_Model {
             $this->load->database();
     }
     
+    function getGroupCategoryId($categoryId){
+        
+            $this->db->select("g_category_id");
+            $this->db->from('category');
+            $this->db->where('id', $categoryId); 
+            
+            $result_array = $this->db->get()->result_array();
+            return $result_array[0];
+    }
+    
     function getSideBar($lang){
         
             $this->db->select("group_category.id, group_category.icon, group_category.name$lang"
@@ -24,14 +34,16 @@ class TourmalineModel extends CI_Model {
                 $id = $value["id"];
                 if (array_key_exists($id, $group_category)) {
                     $category = $group_category[$id];
-                    array_push($category->arr, $value["category_name" . $lang]);
+                    array_push($category->arr, array("name" => $value["category_name" . $lang]
+                            , "link" =>$value["category_link"] . $value["category_id"] ));
                 } else {
                     $category = new stdClass();
                     $category->name = $value["name" . $lang];
                     $category->icon = $value["icon"];
-                    $category->link = $value["category_link"] . $value["category_id"];
+//                    $category->link = $value["category_link"] . $value["category_id"];
                     $category->arr = array();
-                    array_push($category->arr, $value["category_name" . $lang]);
+                    array_push($category->arr, array("name" => $value["category_name" . $lang]
+                            , "link" =>$value["category_link"] . $value["category_id"] ));
                     $group_category[$id] = $category;
                 }
             }

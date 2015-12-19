@@ -10,30 +10,36 @@ class Index extends MY_Controller {
     }
     
     public function index($categoryId = null) {
+        $this->indexData["menu_header"] = "home";
         $lang = $this->getSessionLang();
         $products = array();
         if($categoryId){
             $products = $this->t->getProductByCategoryId($categoryId, $lang);
             $highLight = $this->t->getHighLightByCategoryId($categoryId, $lang);
+            $groupCategoryId = $this->t->getGroupCategoryId($categoryId);
             
+            $this->indexData["groupCategoryId"] = $groupCategoryId["g_category_id"];
             $this->indexData["h_header"] = $highLight["g_name"];
             $this->indexData["s_header"] = $highLight["category_name"];
             
         } else {
             $products = $this->t->getProductHighLight();
-            $this->indexData["h_header"] = "Hilight";
+            $this->indexData["h_header"] = "Highlights";
             $this->indexData["s_header"] = "";
         }
         $this->indexData["products"] = $products;
+        $this->indexData["categoryId"] = $categoryId;
         $this->parser->parse('pages/index', $this->indexData);
     }
 
     
     public function contact() {
+        $this->indexData["menu_header"] = "contact";
         $this->pages("contact");
     }
     
     public function about() {
+        $this->indexData["menu_header"] = "about";
         $this->pages("about");
     }
     

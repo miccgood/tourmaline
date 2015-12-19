@@ -1,5 +1,5 @@
 
-<h3> <font style="color: #5D5D5D;"> {h_header} </font> <span class="small">{s_header}</span></h3>
+<h2> <font style="color: #5D5D5D;"> {h_header} </font> <span class="small">{s_header}</span></h2>
 <hr/>
 <div class="row" id="content">
     <?php foreach ($products as $key => $product) { ?>

@@ -22,5 +22,7 @@ $(function () {
     $('.disabled a').on('click', function(e) {
         e.preventDefault();
     });
+    
+    $('#accordion').find(".expand").click()
 
 });
