@@ -166,3 +166,6 @@ a.product.active {
     color:#4C4C4C;
     /*font-family: Brush Script MT;*/
 }
+.well.accordion iframe{
+    background-color: #FFF;
+}

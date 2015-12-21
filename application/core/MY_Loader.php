@@ -173,6 +173,17 @@ class MY_Loader extends CI_Loader {
 		return (object)$this->_sections;
 	}
 
+	function unset_section($areas){
+            if(is_array($areas)){
+                foreach ($areas as $area) {
+                    if (array_key_exists($area, $this->_sections)) {
+                        unset($this->_sections[$area]);
+                    }
+                }
+            } else if (array_key_exists($areas, $this->_sections)) {
+                unset($this->_sections[$areas]);
+            }
+        }
    /*
     * Can load a view file from an absolute path and
     * relative to the CodeIgniter index.php file

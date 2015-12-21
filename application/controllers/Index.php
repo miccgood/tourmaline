@@ -10,7 +10,7 @@ class Index extends MY_Controller {
     }
     
     public function index($categoryId = null) {
-        $this->indexData["menu_header"] = "home";
+//        $this->indexData["menu_header"] = "home";
         $lang = $this->getSessionLang();
         $products = array();
         if($categoryId){
@@ -34,12 +34,13 @@ class Index extends MY_Controller {
 
     
     public function contact() {
-        $this->indexData["menu_header"] = "contact";
+//        $this->indexData["menu_header"] = "contact";
+        $this->load->unset_section(array("banner", "sidebar"));
         $this->pages("contact");
     }
     
     public function about() {
-        $this->indexData["menu_header"] = "about";
+        $this->load->unset_section(array("banner", "sidebar"));
         $this->pages("about");
     }
     

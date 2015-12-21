@@ -3,7 +3,7 @@
 class Gallery extends MY_Controller {
 
     function __construct() {
-        $this->indexData["menu_header"] = "gallery";
+        $this->menuHeader = "gallery";
         parent::__construct();
     }
 
