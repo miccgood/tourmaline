@@ -93,7 +93,7 @@
                             <a href="<?php echo base_url("admin/product")?>">Product</a>
                         </li>
                         <li>
-                            <a href="<?php echo base_url("admin/gallery")?>">Gallery</a>
+                            <a href="<?php echo base_url("admin/gallerys")?>">Gallerys</a>
                         </li>
                         <li>
                             <a href="<?php echo base_url("admin/pages")?>">Pages</a>

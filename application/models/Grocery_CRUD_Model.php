@@ -34,6 +34,8 @@ class Grocery_CRUD_Model  extends CI_Model  {
 	protected $relation = array();
 	protected $relation_n_n = array();
 	protected $primary_keys = array();
+	protected $select_custom = null;
+        
 
 	function __construct()
     {
@@ -84,6 +86,16 @@ class Grocery_CRUD_Model  extends CI_Model  {
 
     	$this->db->select($select, false);
 
+        if(isset($this->select_custom)){
+            $this->db->select($this->select_custom, false);
+        }
+//        $this->state = $crud->getState();
+//            if (in_array($this->state, array('list', 'success'))) {
+//                $this->db->select('group_gallery.*, (SELECT COUNT(*) FROM gallery i WHERE i.group_gallery_id = group_gallery.id ) as img_qty', false);
+    //            $q = $this->db->get('group_gallery');
+                /* Do I need anything else in here ??? */
+//            }
+            
     	$results = $this->db->get($this->table_name)->result();
 
     	return $results;
@@ -96,6 +108,11 @@ class Grocery_CRUD_Model  extends CI_Model  {
     	return $this->db->get($table_name)->row();
     }
 
+    public function set_select_custom($selectCustom = null)
+    {
+    	$this->select_custom = $selectCustom;
+    }
+    
     public function set_primary_key($field_name, $table_name = null)
     {
     	$table_name = $table_name === null ? $this->table_name : $table_name;

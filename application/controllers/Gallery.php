@@ -9,6 +9,8 @@ class Gallery extends MY_Controller {
 
     public function index() {
         
+        $groupGalleryAll = $this->t->getGroupGalleryAll();
+        
 //        $lang = $this->getSessionLang();
 //
 //        $product = array();
@@ -25,8 +27,15 @@ class Gallery extends MY_Controller {
 //        }
 //        $this->indexData = array_merge($this->indexData , $product);
         
-        $this->parser->parse('pages/gallery', $this->indexData);
+        $this->parser->parse('pages/gallery', array("group_gallerys" => $groupGalleryAll));
         
     }
 
+    public function group($groupId) {
+        
+        $gallery = $this->t->getGalleryByGroupId($groupId);
+        
+        $this->parser->parse('pages/gallery', array("gallerys" => $gallery));
+        
+    }
 }

@@ -3471,6 +3471,7 @@ class Grocery_CRUD extends grocery_CRUD_States
 
 	protected $form_validation		= null;
 	protected $change_field_type	= null;
+	protected $select_custom	= null;
 	protected $primary_keys			= array();
 	protected $crud_url_path		= null;
 	protected $list_url_path		= null;
@@ -3529,6 +3530,12 @@ class Grocery_CRUD extends grocery_CRUD_States
 
 	}
 
+
+	public function set_select_custom($selectCustom)
+	{
+            $this->select_custom = $selectCustom;
+//            $this->basic_model->set_select_custom($selectCustom);
+        }        
 	/**
 	 * The displayed columns that user see
 	 *
@@ -4411,6 +4418,12 @@ class Grocery_CRUD extends grocery_CRUD_States
 		}
 	}
 
+        
+	public function _set_select_custom()
+	{
+            $this->basic_model->set_select_custom($this->select_custom);
+        }
+        
 	/**
 	 * Initialize all the required libraries and variables before rendering
 	 */
@@ -4429,6 +4442,8 @@ class Grocery_CRUD extends grocery_CRUD_States
 		$this->_load_date_format();
 
 		$this->_set_primary_keys_to_model();
+                
+		$this->_set_select_custom();
 	}
 
 	/**

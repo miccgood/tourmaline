@@ -19,33 +19,59 @@ class Admin extends MY_Controller {
         return $crud;
     }
 
-    public function gallery($category_id = null) {
+    function help() {
+        $crud = new grocery_CRUD();
+        $this->db
+                ->select('sum(cost) as our_sum')
+                ->group_by('type')
+                ->order_by('our_sum', 'desc');
+        $crud->set_table('help')
+                ->columns('type', 'our_sum');
+        $output = $crud->render();
+        $this->load->view('WriteHereYourView.php', $output);
+    }
+
+    public function gallerys() {
         try {
-            
+
             $crud = $this->getCrud();
-            $crud->set_table('gallery');
-            $crud->set_subject('Gallery');
-            $crud->columns( "category_id", "gallery_header", "gallery_link", "gallery_priority");
-            $crud->order_by('category_id, gallery_priority','desc');
-            $crud->set_relation('category_id', 'category', 'category_name');
-            
-            $crud->set_field_upload('gallery_link', Constant::getUploadGalleryPath());
-            
-            $crud->field_type('show', 'true_false');
-            
-            $crud->display_as('category_id', 'Category');
-            $crud->display_as('gallery_header', 'Header');
-            $crud->display_as('gallery_link', 'Image');
-            $crud->display_as('gallery_priority', 'Priority');
-            
+            $crud->set_table('group_gallery');
+            $crud->set_subject('Gallerys');
+            $crud->columns("group_gallery_name", "img_qty");
+            $crud->order_by('group_gallery_name');
+            $crud->add_action('Gallery', '', 'product/', 'preview-icon', array($this, 'getGalleryUrl'));
+
+            $this->state = $crud->getState();
+            if (in_array($this->state, array('list', 'ajax_list', 'success'))) {
+                $select_c = 'group_gallery.*, (SELECT COUNT(*) FROM gallery i WHERE i.group_gallery_id = group_gallery.id ) as img_qty';
+                $crud->set_select_custom($select_c);
+            }
+
+            $crud->callback_column('img_qty', array($this, 'countRec'));
+
+            $crud->display_as('group_gallery_name', 'Name');
+            $crud->display_as('img_qty', 'Count');
+
             $output = $crud->render();
             $this->output($output);
-          } catch (Exception $e) {
+        } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
     }
-    
-    public function gallerys($category_id = null) {
+
+    public function countRec($value, $row) {
+
+        return $row->img_qty;
+//        return number_format($value, 0, '.', ',');
+    }
+
+    function getGalleryUrl($primary_key, $row) {
+        $url = base_url('admin/multi_gallery') . '/' . $primary_key;
+//        $url = base_url('gallery/index').'/'.$row->category_id.'/'.$primary_key;
+        return $url;
+    }
+
+    public function multi_gallery($category_id = null) {
         try {
 
             $this->load->library('Image_CRUD');
@@ -58,9 +84,9 @@ class Admin extends MY_Controller {
                     ->set_ordering_field('gallery_priority')
                     ->set_image_path(Constant::getUploadGalleryPath());
 //            if($category_id != null){
-                $image_crud->set_relation_field('category_id');
+            $image_crud->set_relation_field('group_gallery_id');
 //            }
-            
+
             $output = $image_crud->render();
 //		$this->_example_output($output);
             $this->output($output);
@@ -167,8 +193,6 @@ class Admin extends MY_Controller {
 
             $crud->set_relation('g_category_id', 'group_category', 'name' . $lang);
 
-            $crud->add_action('Gallery', '', 'product/', 'preview-icon', array($this, 'getGalleryUrl'));
-
             $crud->display_as('category_name', 'Name');
             $crud->display_as('category_name_eng', 'Name Eng');
             $crud->display_as('g_category_id', 'Group');
@@ -177,12 +201,6 @@ class Admin extends MY_Controller {
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
-    }
-
-    function getGalleryUrl($primary_key, $row) {
-        $url = base_url('admin/gallerys') . '/' . $primary_key;
-//        $url = base_url('gallery/index').'/'.$row->category_id.'/'.$primary_key;
-        return $url;
     }
 
     public function group() {

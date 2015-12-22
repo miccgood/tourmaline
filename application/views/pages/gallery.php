@@ -8,65 +8,42 @@
         <div class="col-lg-12">
             <hr/>
         </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-            <a class="thumbnail" href="#">
-                <img class="img-responsive" src="http://placehold.it/400x300" alt="">
-            </a>
-        </div>
+
+        <?php
+        if (isset($group_gallerys)) {
+            foreach ($group_gallerys as $group_gallery) {
+                ?>
+
+                <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+                    <a class="thumbnail-group-gallery" href="<?php echo base_url("gallery/group/" . $group_gallery["id"]); ?>">
+                        <h6><?php echo $group_gallery["group_gallery_name"]; ?></h6>
+                        <hr/>
+                        <img class="img-responsive" src="<?php
+                             echo base_url(Constant::getUploadGalleryPath("/" . $group_gallery["gallery_link"]));
+                             ?>" alt="">
+                    </a>
+                </div>
+            <?php
+            }
+        }
+        ?>
+        
+          <?php
+        if (isset($gallerys)) {
+            foreach ($gallerys as $gallery) {
+                ?>
+
+                <div class="col-lg-4 col-md-4 col-xs-6 thumb">
+                    <a class="thumbnail-group-gallery" href="#">
+                        <img class="img-responsive" src="<?php
+                             echo base_url(Constant::getUploadGalleryPath("/" . $gallery["gallery_link"]));
+                             ?>" alt="">
+                    </a>
+                </div>
+            <?php
+            }
+        }
+        ?>
+        
     </div>
 </div>

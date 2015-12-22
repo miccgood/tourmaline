@@ -95,7 +95,7 @@ class CI_Parser {
 	 * @param	bool
 	 * @return	string
 	 */
-	public function parse($template, $data, $return = FALSE)
+	public function parse($template, $data = array(), $return = FALSE)
 	{
 		$template = $this->CI->load->view($template, $data, TRUE);
 
