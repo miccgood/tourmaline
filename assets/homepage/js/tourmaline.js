@@ -23,6 +23,14 @@ $(function () {
         e.preventDefault();
     });
     
-    $('#accordion').find(".expand").click()
+    $('#accordion').find(".expand").click();
 
+//lightbox.option({
+//      'resizeDuration': 200,
+//      'wrapAround': true
+//    })
+    
+//    $(".thumbnail-group-gallery .disable-event").on('click', function(e) {
+//        e.preventDefault();
+//    });
 });

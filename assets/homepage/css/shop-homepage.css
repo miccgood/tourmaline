@@ -239,3 +239,13 @@ a.thumbnail-group-gallery.active {
     color: #5D5D5D;
     margin: 10px;
 }
+
+a.gallery-header {
+    text-decoration: none;
+    color: #5D5D5D;
+}
+
+a.gallery-header:hover {
+    text-decoration: none;
+    color: #BBB9B9;
+}

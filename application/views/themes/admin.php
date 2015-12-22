@@ -4,6 +4,26 @@
         <meta name="resource-type" content="document" />
         <meta name="robots" content="all, index, follow"/>
         <meta name="googlebot" content="all, index, follow" />
+        
+        <link href="<?php echo base_url(); ?>assets/homepage/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url(); ?>assets/homepage/css/shop-homepage.css" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo base_url(); ?>assets/homepage/css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <!-- Le styles -->
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+
+        <script src="<?php echo base_url(); ?>assets/homepage/js/jquery.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="<?php echo base_url(); ?>assets/homepage/js/bootstrap.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>assets/homepage/js/jquery-ui.js"></script>
+        <script src="<?php echo base_url(); ?>assets/homepage/js/tourmaline.js"></script>
+        
         <?php
         /** -- Copy from here -- */
         if (!empty($meta))
@@ -31,25 +51,7 @@
 
         /** -- to here -- */
         ?>
-        <link href="<?php echo base_url(); ?>assets/homepage/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url(); ?>assets/homepage/css/shop-homepage.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo base_url(); ?>assets/homepage/css/jquery-ui.css" rel="stylesheet" type="text/css"/>
-        <!-- Le styles -->
-
-        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-
-        <script src="<?php echo base_url(); ?>assets/homepage/js/jquery.js"></script>
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="<?php echo base_url(); ?>assets/homepage/js/bootstrap.min.js"></script>
-
-        <script src="<?php echo base_url(); ?>assets/homepage/js/jquery-ui.js"></script>
-        <script src="<?php echo base_url(); ?>assets/homepage/js/tourmaline.js"></script>
-
+            
         <style type="text/css" >
 
             body {

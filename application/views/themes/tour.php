@@ -25,12 +25,6 @@
             ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php
         } echo "\n\t";
 
-        foreach ($js as $file) {
-            echo "\n\t\t";
-            ?><script src="<?php echo $file; ?>"></script><?php
-        } echo "\n\t";
-
-        /** -- to here -- */
         ?>
         <link href="<?php echo base_url(); ?>assets/homepage/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="<?php echo base_url(); ?>assets/homepage/css/shop-homepage.css" rel="stylesheet" type="text/css"/>
@@ -51,6 +45,7 @@
         <script src="<?php echo base_url(); ?>assets/homepage/js/jquery-ui.js"></script>
         <script src="<?php echo base_url(); ?>assets/homepage/js/tourmaline.js"></script>
 
+            
         <style type="text/css">
         </style>
     </head>
@@ -78,6 +73,18 @@
             <?php echo $this->load->get_section('footer'); ?>
         </div>
         <!-- /.container -->
+        
+        
+        <?php
+        foreach ($js as $file) {
+            echo "\n\t\t";
+            ?><script src="<?php echo $file; ?>"></script><?php
+        } echo "\n\t";
+
+        /** -- to here -- */
+        ?>
+                
+            
     </body>
 
 </html>

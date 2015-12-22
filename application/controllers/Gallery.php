@@ -32,6 +32,13 @@ class Gallery extends MY_Controller {
     }
 
     public function group($groupId) {
+//        $this->load->js("assets/lightbox2-master/dist/js/lightbox.js");
+//        $this->load->js("assets/lightbox2-master/dist/js/lightbox-plus-jquery.js");
+//        $this->load->css("assets/lightbox2-master/dist/css/lightbox.min.css");
+        
+        $this->load->js("assets/colorbox-master/jquery.colorbox.js");
+        $this->load->js("assets/homepage/js/gallery.js");
+        $this->load->css("assets/colorbox-master/colorbox.css");
         
         $gallery = $this->t->getGalleryByGroupId($groupId);
         
