@@ -20,8 +20,16 @@
                     <li class="disabled">
                         <a href="<?php echo base_url(); ?>">TAT License No. 11/08118</a>
                     </li>
-                    <li><a href="#" class="changeLang" data="th">TH</a></li>
-                    <li><a href="#" class="changeLang" data="en">EN</a></li>
+                    <li>
+                        <a href="#" class="changeLang" data="th">
+                            <img src="<?php echo base_url("assets/themes/default/images/icon-menu/334c9-flag-thai.png"); ?>"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="changeLang" data="en">
+                            <img src="<?php echo base_url("assets/themes/default/images/icon-menu/a55a9-flag-united-states.png"); ?>"/>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="collapse navbar-collapse">

@@ -249,3 +249,12 @@ a.gallery-header:hover {
     text-decoration: none;
     color: #BBB9B9;
 }
+
+a.changeLang {
+    padding-left: 5px !important;
+}
+
+.changeLang img {
+    width: 20px;
+    height: 20px;
+}
