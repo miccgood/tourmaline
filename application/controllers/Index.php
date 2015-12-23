@@ -9,12 +9,14 @@ class Index extends MY_Controller {
         parent::__construct();
     }
     
-    public function index($categoryId = null) {
+    public function index($categoryId = null, $page = 0) {
 //        $this->indexData["menu_header"] = "home";
         $lang = $this->getSessionLang();
         $products = array();
-        if($categoryId){
-            $products = $this->t->getProductByCategoryId($categoryId, $lang);
+        $countProduct = 0;
+        if($categoryId && $categoryId > 0){
+            $products = $this->t->getProductByCategoryId($categoryId, $lang, $page);
+            $countProduct = $this->t->countProductByCategoryId();
             $highLight = $this->t->getHighLightByCategoryId($categoryId, $lang);
             $groupCategoryId = $this->t->getGroupCategoryId($categoryId);
             
@@ -23,12 +25,16 @@ class Index extends MY_Controller {
             $this->indexData["s_header"] = $highLight["category_name"];
             
         } else {
-            $products = $this->t->getProductHighLight();
+            $products = $this->t->getProductHighLight($page);
+            $countProduct = $this->t->countProductHighLight();
+            
             $this->indexData["h_header"] = "Highlights";
             $this->indexData["s_header"] = "";
         }
         $this->indexData["products"] = $products;
+        $this->indexData["countProduct"] = $countProduct;
         $this->indexData["categoryId"] = $categoryId;
+        $this->indexData["page"] = $page;
         $this->parser->parse('pages/index', $this->indexData);
     }
 

@@ -11,27 +11,26 @@ class TourmalineModel extends CI_Model {
         $this->load->database();
     }
 
-    
     function getGalleryByGroupId($groupId) {
         $this->db->select("*");
         $this->db->from('gallery');
         $this->db->where("group_gallery_id", $groupId);
-        $this->db->order_by("gallery_priority");    
+        $this->db->order_by("gallery_priority");
 //        $this->db->where('group_category.show', 1);
 //        $this->db->order_by("group_category.name$lang");
 //        $this->db->where('id', $categoryId);
 
         return $this->db->get()->result_array();
     }
-    
+
     function getGroupGalleryAll() {
         $this->db->select("group_gallery.id, group_gallery.group_gallery_name, gallery.gallery_priority, gallery.gallery_link");
         $this->db->from('group_gallery');
-        
+
         $this->db->join('gallery', 'group_gallery.id = gallery.group_gallery_id');
         $this->db->group_by("group_gallery.id, group_gallery.group_gallery_name, gallery.gallery_priority");
         $this->db->having("1 = min(gallery_priority)");
-        $this->db->order_by("gallery_priority");    
+        $this->db->order_by("gallery_priority");
 //        $this->db->where('group_category.show', 1);
 //        $this->db->order_by("group_category.name$lang");
 //        $this->db->where('id', $categoryId);
@@ -99,18 +98,52 @@ class TourmalineModel extends CI_Model {
         return $this->db->get()->result_array();
     }
 
-    function getProductHighLight() {
+
+    function getProductHighLight($page) {
+        $limitValue = Constant::getLimitValue();
+        return $this->dbProductHighLight()
+                        ->limit($limitValue, $limitValue * $page)
+                        ->get()
+                        ->result_array();
+    }
+
+    function countProductHighLight() {
+
+        return $this->dbProductHighLight()
+                        ->count_all_results();
+    }
+
+    private function dbProductHighLight() {
 //            $crud->columns('product_banner_link', "product_header", 'product_details', 'product_price', "category_id");
         $this->db->select("product.id, product_banner_link, product_header, product_sub_header, product_details, product_price, category_id, star");
         $this->db->from('product');
         $this->db->where('show', 1);
         $this->db->where('highlight', 1);
+//        $this->db->limit($this->limitValue, $this->limitValue * $page);
         $this->db->order_by('star desc');
-        return $this->db->get()->result_array();
+        return $this->db;
+//        return $this->db->get()->result_array();
     }
 
-    function getProductByCategoryId($categoryId, $lang, $productId = null) {
-//            $crud->columns('product_banner_link', "product_header", 'product_details', 'product_price', "category_id");
+//    count_all_results
+
+    function getProductByCategoryId($categoryId, $lang, $productId = null, $page = 1) {
+
+        $limitValue = Constant::getLimitValue();
+        return $this->dbProductByCategoryId($categoryId, $lang, $productId)
+                ->limit($limitValue, $limitValue * $page)
+                ->get()
+                ->result_array();
+    }
+    
+    function countProductByCategoryId() {
+
+        return $this->dbProductByCategoryId($categoryId, $lang, $productId)
+                        ->count_all_results();
+    }
+
+    private function dbProductByCategoryId($categoryId, $lang, $productId = null) {
+
         $this->db->select("product.id, product_banner_link, product_header, product_sub_header"
                 . ", product_details, product_price, category_id, star, category.category_name$lang as category_name ");
         $this->db->from('product');
@@ -118,8 +151,11 @@ class TourmalineModel extends CI_Model {
         $this->db->where('show', 1);
         $this->db->where('category_id', $categoryId);
         $this->db->where('product.id <>', $productId);
+//        $this->db->limit($this->limitValue, $this->limitValue * $page);
         $this->db->order_by('star desc');
-        return $this->db->get()->result_array();
+
+        return $this->db;
+//        return $this->db->get()->result_array();
     }
 
     function getCategoryById($categoryId) {
