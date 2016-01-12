@@ -39,6 +39,16 @@ class TourmalineModel extends CI_Model {
         return $this->db->get()->result_array();
     }
 
+    
+    function getGroupGalleryNameById($groupId) {
+        $this->db->select("group_gallery.group_gallery_name");
+        $this->db->from('group_gallery');
+        $this->db->where('group_gallery.id', $groupId);
+
+        $result_array = $this->db->get()->result_array();
+        return $result_array[0]["group_gallery_name"];
+    }
+    
     function getGroupGalleryAll() {
         $this->db->select("group_gallery.id, group_gallery.group_gallery_name, gallery.gallery_priority, gallery.gallery_link");
         $this->db->from('group_gallery');

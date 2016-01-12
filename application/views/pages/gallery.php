@@ -9,13 +9,14 @@
                     <a class="gallery-header" href="<?php echo base_url("gallery"); ?>" >
                         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                         Gallery
+                        <span class="small"><?php echo "($galleryGroupName)"; ?></span>
                     </a>
                 <?php
                 } else {
                     echo "Gallery";
                 }
                 ?>
-                <span class="small"></span></h2>
+                </h2>
         </div>
         <div class="col-lg-12">
             <hr/>

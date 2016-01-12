@@ -41,8 +41,13 @@ class Gallery extends MY_Controller {
         $this->load->css("assets/colorbox-master/colorbox.css");
         
         $gallery = $this->t->getGalleryByGroupId($groupId);
+        $galleryGroupName = $this->t->getGroupGalleryNameById($groupId);
         
-        $this->parser->parse('pages/gallery', array("gallerys" => $gallery));
+        $this->parser->parse('pages/gallery', 
+                array("gallerys" => $gallery, 
+                    "galleryGroupName" => $galleryGroupName
+                )
+            );
         
     }
 }
