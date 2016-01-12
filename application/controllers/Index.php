@@ -15,8 +15,8 @@ class Index extends MY_Controller {
         $products = array();
         $countProduct = 0;
         if($categoryId && $categoryId > 0){
-            $products = $this->t->getProductByCategoryId($categoryId, $lang, $page);
-            $countProduct = $this->t->countProductByCategoryId();
+            $products = $this->t->getProductByCategoryId($categoryId, $lang, null, $page);
+            $countProduct = $this->t->countProductByCategoryId($categoryId, $lang);
             $highLight = $this->t->getHighLightByCategoryId($categoryId, $lang);
             $groupCategoryId = $this->t->getGroupCategoryId($categoryId);
             

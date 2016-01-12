@@ -142,7 +142,7 @@ class TourmalineModel extends CI_Model {
 
 //    count_all_results
 
-    function getProductByCategoryId($categoryId, $lang, $productId = null, $page = 1) {
+    function getProductByCategoryId($categoryId, $lang, $productId = null, $page = 0) {
 
         $limitValue = Constant::getLimitValue();
         return $this->dbProductByCategoryId($categoryId, $lang, $productId)
@@ -151,7 +151,7 @@ class TourmalineModel extends CI_Model {
                         ->result_array();
     }
 
-    function countProductByCategoryId() {
+    function countProductByCategoryId($categoryId, $lang, $productId = null) {
 
         return $this->dbProductByCategoryId($categoryId, $lang, $productId)
                         ->count_all_results();

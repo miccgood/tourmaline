@@ -11,14 +11,17 @@ class Product extends MY_Controller {
         $lang = $this->getSessionLang();
 
         $product = array();
+        $countProduct = 0;
         if ($productId) {
             $product = $this->t->getProductById($productId);
             $highLight = $this->t->getHighLightByCategoryId($product["category_id"], $lang);
+            $countProduct = $this->t->countProductByCategoryId($categoryId, $lang, $productId);
 
             $this->indexData["h_header"] = $highLight["g_name"];
             $this->indexData["s_header"] = $highLight["category_name"];
         } else {
-            $product = $this->t->getProductHighLight();
+            $product = $this->t->getProductHighLight(0);
+            $countProduct = $this->t->countProductHighLight();
             $this->indexData["h_header"] = "Highlights";
             $this->indexData["s_header"] = "";
         }
@@ -39,6 +42,7 @@ class Product extends MY_Controller {
         }
         if(!empty($products)){
             $this->indexData["products"] = $products;
+			$this->indexData["countProduct"] = $countProduct;
             $this->parser->parse('pages/index', $this->indexData);
         }
     }
