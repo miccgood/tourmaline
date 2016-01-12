@@ -11,6 +11,22 @@ class TourmalineModel extends CI_Model {
         $this->load->database();
     }
 
+    function login($username, $password) {
+        $this->db->select('id, username, password');
+        $this->db->from('users');
+        $this->db->where('username', $username);
+        $this->db->where('password', MD5($password));
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
     function getGalleryByGroupId($groupId) {
         $this->db->select("*");
         $this->db->from('gallery');
@@ -98,7 +114,6 @@ class TourmalineModel extends CI_Model {
         return $this->db->get()->result_array();
     }
 
-
     function getProductHighLight($page) {
         $limitValue = Constant::getLimitValue();
         return $this->dbProductHighLight()
@@ -131,11 +146,11 @@ class TourmalineModel extends CI_Model {
 
         $limitValue = Constant::getLimitValue();
         return $this->dbProductByCategoryId($categoryId, $lang, $productId)
-                ->limit($limitValue, $limitValue * $page)
-                ->get()
-                ->result_array();
+                        ->limit($limitValue, $limitValue * $page)
+                        ->get()
+                        ->result_array();
     }
-    
+
     function countProductByCategoryId() {
 
         return $this->dbProductByCategoryId($categoryId, $lang, $productId)

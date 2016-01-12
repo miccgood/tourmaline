@@ -102,11 +102,11 @@
                         </li>
                     </ul>
 
-<!--                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../navbar/">Default</a></li>
-                        <li><a href="../navbar-static-top/">Static top</a></li>
-                        <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
-                    </ul>-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="<?php echo base_url("admin/logout")?>">Logout</a></li>
+                        <!--<li><a href="../navbar-static-top/">Static top</a></li>-->
+                        <!--<li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>-->
+                    </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
@@ -127,16 +127,16 @@
 
         <div class="container">
 
-            <hr>
+            <!--<hr>-->
 
             <!-- Footer -->
-            <footer>
+<!--            <footer>
                 <div class="row">
                     <div class="col-lg-12">
                         <p>Copyright &copy; Your Website 2014</p>
                     </div>
                 </div>
-            </footer>
+            </footer>-->
 
         </div>
         <!-- /.container -->

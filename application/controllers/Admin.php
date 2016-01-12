@@ -8,9 +8,21 @@ class Admin extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->database();
-//        $this->load->helper('url');
         $this->load->library('grocery_CRUD');
-        $this->output->set_template('admin');
+        
+        $sess_array = $this->session->userdata('logged_in');
+        if ($sess_array) {
+            $this->output->set_template('admin');
+        } else {
+            //If no session, redirect to login page
+            redirect('login', 'refresh');
+        }
+    }
+    
+    function logout() {
+        $this->session->unset_userdata('logged_in');
+        session_destroy();
+        redirect('admin', 'refresh');
     }
 
     private function getCrud() {
@@ -60,9 +72,7 @@ class Admin extends MY_Controller {
     }
 
     public function countRec($value, $row) {
-
         return $row->img_qty;
-//        return number_format($value, 0, '.', ',');
     }
 
     function getGalleryUrl($primary_key, $row) {
@@ -228,38 +238,13 @@ class Admin extends MY_Controller {
         return true;
     }
 
-    function callback_before_upload($files_to_upload, $field_info) {
-        /*
-         * Examples of what the $files_to_upload and $field_info will be:    
-          $files_to_upload = Array
-          (
-          [sd1e6fec1] => Array
-          (
-          [name] => 86.jpg
-          [type] => image/jpeg
-          [tmp_name] => C:\wamp\tmp\phpFC42.tmp
-          [error] => 0
-          [size] => 258177
-          )
-
-          )
-
-          $field_info = stdClass Object
-          (
-          [field_name] => file_url
-          [upload_path] => assets/uploads/files
-          [encrypted_field_name] => sd1e6fec1
-          )
-
-         */
-
-
-        if (is_dir($field_info->upload_path)) {
-            return true;
-        } else {
-            return 'I am sorry but it seems that the folder that you are trying to upload doesn\'t exist.';
-        }
-    }
+//    function callback_before_upload($files_to_upload, $field_info) {
+//        if (is_dir($field_info->upload_path)) {
+//            return true;
+//        } else {
+//            return 'I am sorry but it seems that the folder that you are trying to upload doesn\'t exist.';
+//        }
+//    }
 
     function callback_after_upload($uploader_response, $field_info, $files_to_upload) {
 //        $this->load->library('image_moo');
