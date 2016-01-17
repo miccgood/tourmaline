@@ -123,6 +123,17 @@ class TourmalineModel extends CI_Model {
 
         return $this->db->get()->result_array();
     }
+    
+
+    function getSidebarBoxs() {
+
+        $this->db->select("*");
+        $this->db->from('pages');
+        $this->db->like('page_name', 'sidebar', 'after'); 
+        $this->db->order_by('page_name'); 
+
+        return $this->db->get()->result_array();
+    }
 
     function getProductHighLight($page) {
         $limitValue = Constant::getLimitValue();

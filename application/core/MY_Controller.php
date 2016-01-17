@@ -46,8 +46,10 @@ class MY_Controller extends CI_Controller {
         if($this->template_control["sidebar"]){
             $lang = $this->getSessionLang();
             $group_category = $this->t->getSideBar($lang);
+            $sidebarBoxs = $this->t->getSidebarBoxs();
             $this->load->section('sidebar', 'pages/template/sidebar', 
-                array("group_category" => $group_category));
+                array("group_category" => $group_category,
+                    "sidebarBoxs" => $sidebarBoxs));
         }
          
         if($this->template_control["footer"]){

@@ -23,8 +23,11 @@
         </div>
     </div>
 
-    <div class="well accordion">
-        <h4>Stats</h4>
-        <iframe height=160 width="100%" src="http://www.siamvip.com/ManageFiles/counter/?web=http://tourmalinetravel.com/" frameBorder=1 scrolling=no></iframe>
-    </div>
+     <?php foreach ($sidebarBoxs as $key => $value) {?>
+        <div class="well accordion">
+            <h4><?php echo $value["page_h_header"] ;?></h4>
+            <?php echo $value["page_details"] ;?>
+        </div>
+     <?php }?> 
+            
 </div>
