@@ -27,7 +27,7 @@ class Index extends MY_Controller {
         } else {
             $products = $this->t->getProductHighLight($page);
             $countProduct = $this->t->countProductHighLight();
-            
+            $categoryId = 0;
             $this->indexData["h_header"] = "Highlights";
             $this->indexData["s_header"] = "";
         }

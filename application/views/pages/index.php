@@ -64,7 +64,7 @@
                             <h5 class="header">
                                 <?php echo $product["product_header"] ?>
                             </h5>
-                            <h5 class="price">ราคา <?php echo number_format($product["product_price"], 0, '.', ','); ?> บาท</h5>
+                            <h5 class="price">ราคาเริ่มต้น <?php echo number_format($product["product_price"], 0, '.', ','); ?> บาท</h5>
                             <div class="subHeader">
                                 <?php echo $product["product_sub_header"] ?>
                             </div>

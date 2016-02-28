@@ -27,9 +27,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-lg-3 col-md-3 col-sm-3">ราคา(เริ่มที่)</label>
+                        <label class="col-lg-3 col-md-3 col-sm-3">ราคาเริ่มต้น</label>
                         <div class="col-lg-9 col-md-9 col-sm-9">
-                            <?php echo number_format($product_price, 0, '.', ','); ?> 
+                            <?php echo number_format($product_price, 0, '.', ','); ?> บาท
                         </div>
                     </div>
                     <div class="row">
