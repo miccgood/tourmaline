@@ -156,7 +156,7 @@ class TourmalineModel extends CI_Model {
         $this->db->where('show', 1);
         $this->db->where('highlight', 1);
 //        $this->db->limit($this->limitValue, $this->limitValue * $page);
-        $this->db->order_by('star desc');
+        $this->db->order_by('id desc');
         return $this->db;
 //        return $this->db->get()->result_array();
     }
@@ -188,7 +188,7 @@ class TourmalineModel extends CI_Model {
         $this->db->where('category_id', $categoryId);
         $this->db->where('product.id <>', $productId);
 //        $this->db->limit($this->limitValue, $this->limitValue * $page);
-        $this->db->order_by('star desc');
+        $this->db->order_by('id desc');
 
         return $this->db;
 //        return $this->db->get()->result_array();
