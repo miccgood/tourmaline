@@ -188,7 +188,7 @@ class TourmalineModel extends CI_Model {
         $this->db->where('category_id', $categoryId);
         $this->db->where('product.id <>', $productId);
 //        $this->db->limit($this->limitValue, $this->limitValue * $page);
-        $this->db->order_by('id desc');
+        $this->db->order_by('product.id desc');
 
         return $this->db;
 //        return $this->db->get()->result_array();
