@@ -1,5 +1,4 @@
 
-<div class="col-md-3-5 col-xs-3-5">
 
     <div class="well accordion">
         <h4>Tour Destinations</h4>
@@ -29,5 +28,4 @@
             <?php echo $value["page_details"] ;?>
         </div>
      <?php }?> 
-            
-</div>
+           

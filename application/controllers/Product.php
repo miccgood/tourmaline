@@ -42,7 +42,9 @@ class Product extends MY_Controller {
         }
         if(!empty($products)){
             $this->indexData["products"] = $products;
-			$this->indexData["countProduct"] = $countProduct;
+            $this->indexData["countProduct"] = count($products);
+//            $this->indexData["categoryId"] = $categoryId;
+//            $this->indexData["page"] = 0;
             $this->parser->parse('pages/index', $this->indexData);
         }
     }

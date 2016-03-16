@@ -24,7 +24,6 @@
             echo "\n\t\t";
             ?><link rel="stylesheet" href="<?php echo $file; ?>" type="text/css" /><?php
         } echo "\n\t";
-
         ?>
         <link href="<?php echo base_url(); ?>assets/homepage/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="<?php echo base_url(); ?>assets/homepage/css/shop-homepage.css" rel="stylesheet" type="text/css"/>
@@ -45,7 +44,7 @@
         <script src="<?php echo base_url(); ?>assets/homepage/js/jquery-ui.js"></script>
         <script src="<?php echo base_url(); ?>assets/homepage/js/tourmaline.js"></script>
 
-            
+
         <style type="text/css">
         </style>
     </head>
@@ -62,10 +61,15 @@
 
             <div class="row">
 
-                <?php echo $this->load->get_section('sidebar'); ?>
-                
-                <?php echo $output; ?>
+                <div class="col-md-3-5 col-xs-3-5"> 
+                    <?php echo $this->load->get_section('sidebar'); ?>
+                </div>
 
+                <div class="col-md-9-5 col-xs-9-5"> 
+
+                    <?php echo $output; ?>
+
+                </div>
             </div>
 
             <!--<hr>-->
@@ -73,8 +77,8 @@
             <?php echo $this->load->get_section('footer'); ?>
         </div>
         <!-- /.container -->
-        
-        
+
+
         <?php
         foreach ($js as $file) {
             echo "\n\t\t";
@@ -83,8 +87,8 @@
 
         /** -- to here -- */
         ?>
-                
-            
+
+
     </body>
 
 </html>
